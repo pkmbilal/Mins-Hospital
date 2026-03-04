@@ -7,7 +7,7 @@ import { BLOG_POSTS } from "@/lib/siteData"
 
 export default function BlogSection() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12">
+    <section className="mx-auto max-w-6xl px-4 pt-2 pb-12">
       <div className="flex items-end justify-between gap-6">
         <div>
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Health Tips</h2>

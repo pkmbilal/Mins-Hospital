@@ -179,8 +179,8 @@ export default function OffersSection() {
   }
 
   return (
-    <section className="border-y bg-muted/30">
-      <div className="mx-auto max-w-6xl px-4 py-12">
+    <section className="bg-muted/30">
+      <div className="mx-auto max-w-6xl px-4 pt-6 pb-12">
         {/* Title */}
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
