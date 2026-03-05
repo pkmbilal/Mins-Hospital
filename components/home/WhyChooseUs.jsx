@@ -10,6 +10,7 @@ import {
   HeartPulse,
   Headset,
 } from "lucide-react"
+import { cn } from "@/lib/utils" // ✅ shadcn helper
 
 const WHY_CARDS = [
   {
@@ -51,11 +52,13 @@ function useIsMobile(breakpoint = 640) {
   return isMobile
 }
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({
+  className,
+  containerClassName,
+}) {
   const isMobile = useIsMobile(640)
   const [active, setActive] = useState(0)
 
-  // swipe handling
   const startXRef = useRef(null)
   const draggingRef = useRef(false)
 
@@ -87,86 +90,88 @@ export default function WhyChooseUs() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-4">
-      {/* Heading */}
-      <div className="max-w-2xl">
-        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          Why choose us
-        </h2>
-        <p className="mt-2 text-muted-foreground">
-          Reliable care is about people + process — we focus on both
-        </p>
-      </div>
+    <section className={cn("mx-auto max-w-6xl", className)}>
+      <div className={cn("px-4", containerClassName)}>
+        {/* Heading */}
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Why choose us
+          </h2>
+          <p className="mt-2 text-muted-foreground">
+            Reliable care is about people + process — we focus on both
+          </p>
+        </div>
 
-      {/* Desktop / Tablet grid */}
-      <div className="mt-8 hidden gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {WHY_CARDS.map((c) => {
-          const Icon = c.icon
-          return (
-            <Card
-              key={c.title}
-              className={[
-                "group rounded-2xl border bg-background cursor-pointer",
-                "transition-all duration-300",
-                "hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5",
-                "hover:border-primary/30",
-              ].join(" ")}
-            >
-              <CardContent className="p-5">
-                <div className="flex flex-col items-start gap-3">
-                  <div
-                    className={[
-                      "grid h-12 w-12 place-items-center rounded-2xl border bg-muted/40",
-                      "transition-all duration-300",
-                      "group-hover:bg-primary/10 group-hover:border-primary/30",
-                      "group-hover:scale-[1.03]",
-                    ].join(" ")}
-                  >
-                    <Icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:rotate-[-6deg]" />
+        {/* Desktop / Tablet grid */}
+        <div className="mt-8 hidden gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          {WHY_CARDS.map((c) => {
+            const Icon = c.icon
+            return (
+              <Card
+                key={c.title}
+                className={[
+                  "group rounded-2xl border bg-background cursor-pointer",
+                  "transition-all duration-300",
+                  "hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5",
+                  "hover:border-primary/30",
+                ].join(" ")}
+              >
+                <CardContent className="p-5">
+                  <div className="flex flex-col items-start gap-3">
+                    <div
+                      className={[
+                        "grid h-12 w-12 place-items-center rounded-2xl border bg-muted/40",
+                        "transition-all duration-300",
+                        "group-hover:bg-primary/10 group-hover:border-primary/30",
+                        "group-hover:scale-[1.03]",
+                      ].join(" ")}
+                    >
+                      <Icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:rotate-[-6deg]" />
+                    </div>
+
+                    <div className="text-base font-semibold leading-snug transition-colors duration-300 group-hover:text-primary">
+                      {c.title}
+                    </div>
+
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {c.desc}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+
+        {/* Mobile swipe carousel */}
+        <div className="mt-8 sm:hidden">
+          <div
+            className="mx-auto max-w-sm select-none"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            <Card className="rounded-2xl border bg-background transition-all duration-300 active:scale-[0.98]">
+              <CardContent className="p-6">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border bg-primary/10">
+                    <activeCard.icon className="h-7 w-7 text-primary" />
                   </div>
 
-                  <div className="text-base font-semibold leading-snug transition-colors duration-300 group-hover:text-primary">
-                    {c.title}
+                  <div className="text-base font-semibold leading-snug">
+                    {activeCard.title}
                   </div>
 
                   <p className="text-sm leading-relaxed text-muted-foreground">
-                    {c.desc}
+                    {activeCard.desc}
                   </p>
+
+                  <div className="pt-2 text-xs text-muted-foreground">
+                    Swipe right or left
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          )
-        })}
-      </div>
-
-      {/* Mobile swipe carousel (no arrows, no dots) */}
-      <div className="mt-8 sm:hidden">
-        <div
-          className="mx-auto max-w-sm select-none"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
-          <Card className="rounded-2xl border bg-background transition-all duration-300 active:scale-[0.98]">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center gap-3 text-center">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl border bg-primary/10">
-                  <activeCard.icon className="h-7 w-7 text-primary" />
-                </div>
-
-                <div className="text-base font-semibold leading-snug">
-                  {activeCard.title}
-                </div>
-
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {activeCard.desc}
-                </p>
-
-                <div className="pt-2 text-xs text-muted-foreground">
-                  Swipe right or left
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          </div>
         </div>
       </div>
     </section>

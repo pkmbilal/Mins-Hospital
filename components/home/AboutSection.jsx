@@ -24,7 +24,6 @@ export default function AboutSection({
         {/* Left: Image space */}
         <div className="relative">
           <div className="aspect-[4/3] overflow-hidden rounded-2xl border bg-muted/40">
-            {/* Replace this placeholder with <Image/> or video later */}
             <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
               <Image
                 src="/images/home/about-hero-img.webp"
