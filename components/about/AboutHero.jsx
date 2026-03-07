@@ -25,7 +25,7 @@ export default function AboutHero() {
             </h1>
 
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              At Mins Hospital, we combine clinical expertise, clean modern infrastructure, and friendly support to make your healthcare journey smoother — from consultation to recovery. Our doctors and staff focus on clear communication, so you always understand your options and next steps.
+              At Mins Hospital, we combine clinical expertise, clean modern infrastructure, and friendly support to make your healthcare journey smoother — from consultation to recovery.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

@@ -73,10 +73,6 @@ export default function ServicesGrid() {
             Explore our departments — expert care, modern facilities, trusted staff.
           </p>
         </div>
-
-        <Button asChild variant="outline" className="hidden md:inline-flex gap-2">
-          <Link href="/services">All Services</Link>
-        </Button>
       </div>
 
       {/* ---------------- Mobile: single centered card carousel ---------------- */}
