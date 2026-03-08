@@ -1,11 +1,10 @@
 import Link from "next/link"
 import {
-  BadgePercent,
   CalendarDays,
-  CheckCircle2,
   HeartPulse,
   ShieldCheck,
   Stethoscope,
+  Activity,
   ArrowRight,
 } from "lucide-react"
 
@@ -16,75 +15,80 @@ import { Card, CardContent } from "@/components/ui/card"
 const OFFERS = [
   {
     id: 1,
-    title: "General Health Checkup",
-    subtitle: "Complete preventive care package for adults",
-    discount: "20% OFF",
-    price: "SAR 199",
-    oldPrice: "SAR 249",
-    validTill: "Valid till 31 March 2026",
+    title: "Fever Profile Test",
+    subtitle: "Essential fever screening package",
+    discount: "₹300 OFF",
+    price: "₹499",
+    oldPrice: "₹799",
+    validTill: "Limited period offer",
     icon: HeartPulse,
-    features: [
-      "Doctor consultation",
-      "Blood pressure check",
-      "Basic blood tests",
-      "Blood sugar screening",
-      "Health summary report",
-    ],
+    features: ["CBC", "CRP", "Widal Test Card", "Urine Routine"],
     tag: "Popular",
   },
   {
     id: 2,
-    title: "Women’s Wellness Package",
-    subtitle: "Routine screening and consultation for women’s health",
-    discount: "15% OFF",
-    price: "SAR 299",
-    oldPrice: "SAR 349",
-    validTill: "Valid till 31 March 2026",
-    icon: ShieldCheck,
+    title: "Diabetic Health",
+    subtitle: "Diabetes screening and consultation package",
+    discount: "₹251 OFF",
+    price: "₹499",
+    oldPrice: "₹750",
+    validTill: "Limited period offer",
+    icon: Activity,
     features: [
-      "Specialist consultation",
-      "Routine lab tests",
-      "Vitamin profile",
-      "Health screening",
-      "Follow-up guidance",
+      "Blood Group",
+      "Doctor Consulting",
+      "FBS",
+      "PPBS",
+      "RBS",
+      "HBA1C",
+      "Urea",
+      "Creatinine",
+      "Urine Albumin & Sugar",
     ],
-    tag: "Limited Time",
+    tag: "Best Value",
   },
   {
     id: 3,
-    title: "Child Care Package",
-    subtitle: "Essential pediatric consultation and wellness checks",
-    discount: "10% OFF",
-    price: "SAR 149",
-    oldPrice: "SAR 169",
-    validTill: "Valid till 31 March 2026",
-    icon: Stethoscope,
+    title: "Full Body Health Checkup",
+    subtitle: "Advanced full body screening package",
+    discount: "₹300 OFF",
+    price: "₹999",
+    oldPrice: "₹1299",
+    validTill: "Limited period offer",
+    icon: ShieldCheck,
     features: [
-      "Pediatric consultation",
-      "Growth assessment",
-      "Basic wellness check",
-      "Nutrition advice",
-      "Parent guidance",
+      "FBS",
+      "PPBS",
+      "HBA1C",
+      "Lipid Profile",
+      "RFT",
+      "LFT",
+      "Urine Routine",
+      "CBC",
+      "HIV Card",
+      "HCV Card",
+      "HBSAG Card",
     ],
-    tag: "Family Care",
+    tag: "Comprehensive",
   },
   {
     id: 4,
-    title: "Diabetes Screening Offer",
-    subtitle: "Early screening package for better health management",
-    discount: "25% OFF",
-    price: "SAR 179",
-    oldPrice: "SAR 239",
-    validTill: "Valid till 31 March 2026",
-    icon: BadgePercent,
+    title: "Full Body Checkup",
+    subtitle: "Routine full body checkup package",
+    discount: "₹300 OFF",
+    price: "₹799",
+    oldPrice: "₹1099",
+    validTill: "Limited period offer",
+    icon: Stethoscope,
     features: [
-      "Blood sugar testing",
-      "Doctor review",
-      "Lifestyle guidance",
-      "Risk assessment",
-      "Follow-up recommendation",
+      "FBS",
+      "Lipid Profile",
+      "RFT",
+      "LFT",
+      "Urine Routine",
+      "ECG",
     ],
-    tag: "Best Value",
+    tag: "Special Offer",
   },
 ]
 
@@ -148,15 +152,14 @@ export default function OffersGrid() {
                     {offer.validTill}
                   </p>
 
-                  <div className="mt-5 space-y-3">
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {offer.features.map((feature) => (
-                      <div
+                      <span
                         key={feature}
-                        className="flex items-start gap-3 text-sm"
+                        className="inline-flex items-center rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-xs font-medium text-muted-foreground"
                       >
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </div>
+                        {feature}
+                      </span>
                     ))}
                   </div>
 
