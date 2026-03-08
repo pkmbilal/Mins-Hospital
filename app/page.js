@@ -6,7 +6,6 @@ import HeroSection from "@/components/home/HeroSection"
 import ServicesGrid from "@/components/home/ServicesGrid"
 import WhyChooseUs from "@/components/home/WhyChooseUs"
 import CTABanner from "@/components/home/CTABanner"
-import BlogSection from "@/components/home/BlogSection"
 import SiteFooter from "@/components/home/SiteFooter"
 import OffersSection from "@/components/home/OffersSection"
 import StatsCounterStrip from "@/components/home/StatsCounterStrip"
@@ -24,9 +23,7 @@ export default function HomePage() {
         <ServicesGrid />
         <OffersSection />
         <WhyChooseUs />
-        {/* <Testimonials /> */}
         <CTABanner />
-        <BlogSection />
       </main>
 
       <SiteFooter />

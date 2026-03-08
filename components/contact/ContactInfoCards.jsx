@@ -9,38 +9,8 @@ import {
 } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { CONTACT } from "@/lib/siteData"
+import {INFO} from "@/lib/siteData"
 
-const INFO = [
-  {
-    icon: PhoneCall,
-    title: "Call Us",
-    value: CONTACT.phone,
-    href: `tel:${CONTACT.phone}`,
-    desc: "Speak directly with our team for appointments and assistance.",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    value: CONTACT.whatsapp,
-    href: `https://wa.me/${String(CONTACT.whatsapp).replace(/\D/g, "")}`,
-    desc: "Chat with us quickly for support and booking help.",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    value: CONTACT.email,
-    href: `mailto:${CONTACT.email}`,
-    desc: "Send us your questions and we’ll get back to you soon.",
-  },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    value: "MINS HOSPITAL - KARICODE",
-    href: "#map",
-    desc: "Find directions and plan your visit easily.",
-  },
-]
 
 export default function ContactInfoCards() {
   return (
