@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { OFFERS } from "@/lib/siteData"
 import {
   CalendarDays,
   HeartPulse,
@@ -11,86 +12,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-
-const OFFERS = [
-  {
-    id: 1,
-    title: "Fever Profile Test",
-    subtitle: "Essential fever screening package",
-    discount: "₹300 OFF",
-    price: "₹499",
-    oldPrice: "₹799",
-    validTill: "Limited period offer",
-    icon: HeartPulse,
-    features: ["CBC", "CRP", "Widal Test Card", "Urine Routine"],
-    tag: "Popular",
-  },
-  {
-    id: 2,
-    title: "Diabetic Health",
-    subtitle: "Diabetes screening and consultation package",
-    discount: "₹251 OFF",
-    price: "₹499",
-    oldPrice: "₹750",
-    validTill: "Limited period offer",
-    icon: Activity,
-    features: [
-      "Blood Group",
-      "Doctor Consulting",
-      "FBS",
-      "PPBS",
-      "RBS",
-      "HBA1C",
-      "Urea",
-      "Creatinine",
-      "Urine Albumin & Sugar",
-    ],
-    tag: "Best Value",
-  },
-  {
-    id: 3,
-    title: "Full Body Health Checkup",
-    subtitle: "Advanced full body screening package",
-    discount: "₹300 OFF",
-    price: "₹999",
-    oldPrice: "₹1299",
-    validTill: "Limited period offer",
-    icon: ShieldCheck,
-    features: [
-      "FBS",
-      "PPBS",
-      "HBA1C",
-      "Lipid Profile",
-      "RFT",
-      "LFT",
-      "Urine Routine",
-      "CBC",
-      "HIV Card",
-      "HCV Card",
-      "HBSAG Card",
-    ],
-    tag: "Comprehensive",
-  },
-  {
-    id: 4,
-    title: "Full Body Checkup",
-    subtitle: "Routine full body checkup package",
-    discount: "₹300 OFF",
-    price: "₹799",
-    oldPrice: "₹1099",
-    validTill: "Limited period offer",
-    icon: Stethoscope,
-    features: [
-      "FBS",
-      "Lipid Profile",
-      "RFT",
-      "LFT",
-      "Urine Routine",
-      "ECG",
-    ],
-    tag: "Special Offer",
-  },
-]
 
 export default function OffersGrid() {
   return (

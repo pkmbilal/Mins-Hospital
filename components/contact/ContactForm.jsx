@@ -96,7 +96,7 @@ export default function ContactForm() {
               </p>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 flex md:flex-row flex-col md:gap-2 gap-3">
               <Button asChild className="w-full justify-center gap-2 sm:w-auto">
                 <Link
                   href={`https://wa.me/${whatsappNumber}`}
