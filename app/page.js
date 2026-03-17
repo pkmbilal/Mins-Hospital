@@ -14,7 +14,7 @@ const siteUrl = "https://minshospital.com"
 export const metadata = {
   title: "Home Care Services Kollam | Mins Hospital",
   description:
-    "Mins Hospital provides trusted home care services in Kollam, with compassionate patient care, elderly support, and post-hospital recovery from our Karicode location.",
+    "We provides trusted home care services in Kollam, with compassionate patient care, elderly support, and post-hospital recovery from our Karicode location.",
   keywords: [
     "home care services kollam",
     "home care kollam",

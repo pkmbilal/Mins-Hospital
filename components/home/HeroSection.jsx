@@ -39,7 +39,7 @@ export default function HeroSection() {
           </Badge>
 
           <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
-            Hospital Grade Care, Delivered to Your Home
+            Home Care Services, Delivered to Your Home
           </h1>
 
           <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">

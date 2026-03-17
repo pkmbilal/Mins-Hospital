@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function AboutSection({
   eyebrow = "About Us",
-  heading = "Care that feels personal — with hospital-grade standards",
-  text = "We provide trusted home healthcare with verified professionals, clear clinical protocols, and a dedicated care coordinator for every family. From doctor visits to nursing and recovery programs, our focus is safety, comfort, and consistent outcomes.",
+  heading = "Home Care Service in Karicode, Kollam",
+  text = "We provide Home Care Services in Karicode, Kollam with verified professionals, clear clinical protocols, and a dedicated care coordinator for every family—ensuring safety, comfort, and consistent outcomes across doctor visits, nursing care, and recovery programs.",
   bullets = [
     "Verified doctors & nurses",
     "Clinical protocols & checklists",
@@ -50,9 +50,9 @@ export default function AboutSection({
             {eyebrow}
           </Badge>
 
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight md:text-3xl">
+          <h1 className="mt-4 text-2xl font-semibold tracking-tight md:text-3xl">
             {heading}
-          </h2>
+          </h1>
 
           <p className="mt-4 text-muted-foreground">{text}</p>
 
