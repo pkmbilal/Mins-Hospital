@@ -2,10 +2,9 @@
 
 // components/home/ServicesGrid.jsx
 import Link from "next/link"
-import { useEffect, useMemo, useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useMemo, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { SERVICES } from "@/lib/siteData"
+import { DEPARTMENTS } from "@/lib/siteData"
 
 function slugify(title) {
   return title
@@ -15,14 +14,14 @@ function slugify(title) {
     .replace(/[^a-z0-9-]/g, "")
 }
 
-export default function ServicesGrid() {
+export default function DepartmentsGrid() {
   const [active, setActive] = useState(0)
-  const count = SERVICES.length
+  const count = DEPARTMENTS.length
 
   const startXRef = useRef(null)
   const draggingRef = useRef(false)
 
-  const activeService = useMemo(() => SERVICES[active], [active])
+  const activeDepartment = useMemo(() => DEPARTMENTS[active], [active])
 
   function clampIndex(i) {
     if (!count) return 0
@@ -58,16 +57,16 @@ export default function ServicesGrid() {
     else if (dx < -threshold) goNext()
   }
 
-  const Icon = activeService?.icon
+  const Icon = activeDepartment?.icon
   const href =
-    activeService?.href || `/services/${slugify(activeService?.title || "")}`
+    activeDepartment?.href || `/services/${slugify(activeDepartment?.title || "")}`
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex items-end justify-between gap-6">
         <div>
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            Our Services
+            Our Departments
           </h2>
           <p className="mt-2 text-muted-foreground">
             Explore our departments — expert care, modern facilities, trusted staff.
@@ -118,11 +117,11 @@ export default function ServicesGrid() {
 
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold leading-tight">
-                      {activeService?.title}
+                      {activeDepartment?.title}
                     </h3>
 
                     <p className="text-sm text-muted-foreground line-clamp-3">
-                      {activeService?.desc}
+                      {activeDepartment?.desc}
                     </p>
                   </div>
 
@@ -135,17 +134,11 @@ export default function ServicesGrid() {
             </Card>
           </Link>
         </div>
-
-        {/* <div className="mt-6">
-          <Button asChild variant="outline" className="w-full">
-            <Link href="/services">All Services</Link>
-          </Button>
-        </div> */}
       </div>
 
       {/* ---------------- Desktop: keep your grid ---------------- */}
       <div className="mt-8 hidden md:grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {SERVICES.map((s) => {
+        {DEPARTMENTS.map((s) => {
           const Icon = s.icon
           const href = s.href || `/services/${slugify(s.title)}`
 

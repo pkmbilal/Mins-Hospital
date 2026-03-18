@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { CONTACT, NAV, SERVICES } from "@/lib/siteData";
+import { CONTACT, NAV, DEPARTMENTS } from "@/lib/siteData";
 import NextImage from "next/image";
 
 export default function SiteFooter() {
@@ -45,7 +45,7 @@ export default function SiteFooter() {
           <div>
             <div className="font-medium">Services</div>
             <div className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              {SERVICES.slice(0, 6).map((s) => (
+              {DEPARTMENTS.slice(0, 6).map((s) => (
                 <Link key={s.title} href="/" className="hover:text-foreground">
                   {s.title}
                 </Link>

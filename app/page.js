@@ -2,7 +2,7 @@ import TopUtilityBar from "@/components/home/TopUtilityBar"
 import SiteHeader from "@/components/home/SiteHeader"
 import AboutSection from "@/components/home/AboutSection"
 import HeroSection from "@/components/home/HeroSection"
-import ServicesGrid from "@/components/home/ServicesGrid"
+import ServicesGrid from "@/components/home/DepartmentsGrid"
 import WhyChooseUs from "@/components/home/WhyChooseUs"
 import CTABanner from "@/components/home/CTABanner"
 import SiteFooter from "@/components/home/SiteFooter"
@@ -12,7 +12,7 @@ import StatsCounterStrip from "@/components/home/StatsCounterStrip"
 const siteUrl = "https://minshospital.com"
 
 export const metadata = {
-  title: "Home Care Services Kollam | Mins Hospital",
+  title: "Home Care Services in Kollam | Mins Hospital",
   description:
     "We provides trusted home care services in Kollam, with compassionate patient care, elderly support, and post-hospital recovery from our Karicode location.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Home Care Services Kollam | Mins Hospital",
+    title: "Home Care Services in Kollam | Mins Hospital",
     description:
       "Trusted home care services in Kollam from Mins Hospital, based in Karicode, with elderly care, recovery care, and patient-focused support at home.",
     url: siteUrl,
@@ -41,7 +41,7 @@ export const metadata = {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Home Care Services Kollam - Mins Hospital",
+        alt: "Home Care Services in Kollam - Mins Hospital",
       },
     ],
     type: "website",
@@ -74,7 +74,7 @@ export default function HomePage() {
     email: "info@minshospital.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Karicode",
+      addressLocality: "Kollam",
       addressRegion: "Kerala",
       addressCountry: "IN",
     },
@@ -83,7 +83,7 @@ export default function HomePage() {
       name: "Kollam",
     },
     medicalSpecialty: [
-      "Home Care",
+      "Home Care Kollam",
       "General Medicine",
       "Preventive Healthcare",
       "Specialist Consultation",
@@ -101,7 +101,7 @@ export default function HomePage() {
       <SiteHeader />
 
       <main>
-        <h1 className="sr-only">Home Care Services Kollam</h1>
+        <h1 className="sr-only">Home Care Services in Kollam</h1>
 
         <HeroSection />
         <StatsCounterStrip />

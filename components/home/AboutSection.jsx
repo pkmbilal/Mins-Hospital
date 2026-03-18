@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function AboutSection({
   eyebrow = "About Us",
-  heading = "Home Care Service in Karicode, Kollam",
-  text = "We provide Home Care Services in Karicode, Kollam with verified professionals, clear clinical protocols, and a dedicated care coordinator for every family—ensuring safety, comfort, and consistent outcomes across doctor visits, nursing care, and recovery programs.",
+  heading = "Home Care Service in Kollam",
+  text = "We provide Home Care Services in Kollam with verified professionals, clear clinical protocols, and a dedicated care coordinator for every family—ensuring safety, comfort, and consistent outcomes across doctor visits, nursing care, and recovery programs.",
   bullets = [
     "Verified doctors & nurses",
     "Clinical protocols & checklists",

@@ -1,8 +1,9 @@
-import ServicesGrid from "@/components/home/ServicesGrid"
+import ServicesGrid from "@/components/home/DepartmentsGrid"
 import SiteFooter from "@/components/home/SiteFooter"
 import SiteHeader from "@/components/home/SiteHeader"
-import ServicesCta from "@/components/services/ServicesCta"
-import ServicesHero from "@/components/services/ServicesHero"
+import DepartmentsCta from "@/components/departments/DepartmentsCta"
+import DepartmentsHero from "@/components/departments/DepartmentsHero"
+import DepartmentsGrid from "@/components/home/DepartmentsGrid"
 
 const siteUrl = "https://minshospital.com"
 
@@ -23,13 +24,13 @@ export const metadata = {
     "healthcare specialties Kerala",
   ],
   alternates: {
-    canonical: "/services",
+    canonical: "/departments",
   },
   openGraph: {
     title: "Comprehensive Medical Services | Mins Hospital, Kollam",
     description:
       "Discover specialized healthcare services at Mins Hospital. From general medicine to advanced specialties, find the right care for you and your family.",
-    url: "/services",
+    url: "/departments",
     images: [
       {
         url: "/og-image.jpg",
@@ -52,12 +53,12 @@ export const metadata = {
   },
 }
 
-export default function ServicesPage() {
+export default function DepartmentsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Medical Services at Mins Hospital",
-    url: `${siteUrl}/services`,
+    url: `${siteUrl}/departments`,
     description:
       "Explore comprehensive medical services at Mins Hospital. Find specialized care across General Medicine, Neurology, ENT, Orthopedics, Ophthalmology, Pulmonology, Pediatrics and more in Kollam.",
     mainEntity: {
@@ -90,9 +91,9 @@ export default function ServicesPage() {
       />
 
       <SiteHeader />
-      <ServicesHero />
-      <ServicesGrid />
-      <ServicesCta />
+      <DepartmentsHero />
+      <DepartmentsGrid />
+      <DepartmentsCta />
       <SiteFooter />
     </main>
   )
