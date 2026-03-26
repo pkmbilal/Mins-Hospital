@@ -19,12 +19,46 @@ import { CONTACT, TRUST_CHIPS } from "@/lib/siteData";
 
 export default function HeroSection() {
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    // Hook this to your API route / server action later.
-    setTimeout(() => setLoading(false), 800);
+    setStatus("");
+
+    const formData = new FormData(e.target);
+
+    // Optional hidden fields for FormSubmit
+    formData.append("_subject", "New Callback Request - MindSquare Clinic");
+    formData.append("_captcha", "false");
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/mindsquareclinic@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("Your request has been sent successfully.");
+        e.target.reset();
+      } else {
+        setStatus("Something went wrong. Please try again.");
+        console.error(result);
+      }
+    } catch (error) {
+      setStatus("Submission failed. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -100,19 +134,28 @@ export default function HeroSection() {
           </CardHeader>
           <CardContent>
             <form onSubmit={onSubmit} className="grid gap-3">
+              <input type="hidden" name="_template" value="table" />
               <div className="grid gap-2 md:grid-cols-2">
                 <Input required placeholder="Full name" name="name" />
                 <Input required placeholder="Phone number" name="phone" />
               </div>
+
               <Input placeholder="Location (optional)" name="location" />
+
               <Textarea
                 placeholder="What service do you need? (optional)"
                 name="message"
                 rows={3}
               />
-              <Button disabled={loading} className="w-full">
+
+              <Button type="submit" disabled={loading} className="w-full">
                 {loading ? "Sending..." : "Send Request"}
               </Button>
+
+              {status && (
+                <p className="text-sm text-muted-foreground">{status}</p>
+              )}
+
               <p className="text-xs text-muted-foreground">
                 By submitting, you agree to be contacted for care coordination.
               </p>
