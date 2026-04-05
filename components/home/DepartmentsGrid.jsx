@@ -2,6 +2,7 @@
 
 // components/home/ServicesGrid.jsx
 import Link from "next/link"
+import Image from "next/image"
 import { useMemo, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { DEPARTMENTS } from "@/lib/siteData"
@@ -36,7 +37,6 @@ export default function DepartmentsGrid() {
     setActive((v) => clampIndex(v + 1))
   }
 
-  // Touch swipe (mobile)
   function onTouchStart(e) {
     startXRef.current = e.touches?.[0]?.clientX ?? null
     draggingRef.current = true
@@ -74,7 +74,7 @@ export default function DepartmentsGrid() {
         </div>
       </div>
 
-      {/* ---------------- Mobile: single centered card carousel ---------------- */}
+      {/* Mobile */}
       <div className="mt-8 md:hidden">
         <div
           className="relative"
@@ -84,49 +84,54 @@ export default function DepartmentsGrid() {
           <Link href={href} className="group block">
             <Card
               className={[
-                "relative overflow-hidden rounded-2xl border bg-background",
+                "relative overflow-hidden rounded-2xl border border-white/10 bg-background min-h-[320px]",
                 "transition-all duration-300",
                 "hover:shadow-xl hover:border-primary/30",
                 "focus-within:ring-2 focus-within:ring-primary/20",
               ].join(" ")}
             >
-              {/* Soft gradient glow */}
-              <div
-                className={[
-                  "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300",
-                  "group-hover:opacity-100",
-                  "bg-[radial-gradient(1200px_circle_at_20%_0%,rgba(99,102,241,0.14),transparent_45%),",
-                  "radial-gradient(900px_circle_at_80%_20%,rgba(16,185,129,0.12),transparent_40%)]",
-                ].join("")}
-              />
+              {/* Background image */}
+              {activeDepartment?.image && (
+                <div className="absolute inset-0">
+                  <Image
+                    src={activeDepartment.image}
+                    alt={activeDepartment.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
 
-              <CardContent className="relative p-6">
-                {/* Centered content */}
-                <div className="flex flex-col items-center text-center gap-4">
-                  {/* Icon badge */}
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/55" />
+
+              {/* Extra gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
+
+              <CardContent className="relative z-10 p-6 h-full">
+                <div className="flex h-full flex-col items-center justify-center text-center gap-4">
                   <div
                     className={[
                       "inline-flex items-center justify-center",
-                      "rounded-2xl border bg-primary/5 p-4",
+                      "rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm",
                       "transition-all duration-300",
-                      "group-hover:bg-primary/10 group-hover:border-primary/20",
+                      "group-hover:bg-white/15",
                     ].join(" ")}
                   >
-                    {Icon ? <Icon className="h-7 w-7 text-primary" /> : null}
+                    {Icon ? <Icon className="h-7 w-7 text-white" /> : null}
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold leading-tight">
+                    <h3 className="text-lg font-semibold leading-tight text-white">
                       {activeDepartment?.title}
                     </h3>
 
-                    <p className="text-sm text-muted-foreground line-clamp-3">
+                    <p className="text-sm text-white/80 line-clamp-3">
                       {activeDepartment?.desc}
                     </p>
                   </div>
 
-                  {/* Bottom hint */}
-                  <div className="pt-2 text-xs text-muted-foreground">
+                  <div className="pt-2 text-xs text-white/70">
                     Swipe left or right
                   </div>
                 </div>
@@ -136,7 +141,7 @@ export default function DepartmentsGrid() {
         </div>
       </div>
 
-      {/* ---------------- Desktop: keep your grid ---------------- */}
+      {/* Desktop */}
       <div className="mt-8 hidden md:grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {DEPARTMENTS.map((s) => {
           const Icon = s.icon
@@ -146,37 +151,47 @@ export default function DepartmentsGrid() {
             <Link key={s.title} href={href} className="group">
               <Card
                 className={[
-                  "relative h-full overflow-hidden rounded-2xl border bg-background",
+                  "relative h-[260px] overflow-hidden rounded-2xl border border-white/10 bg-background",
                   "transition-all duration-300",
-                  "hover:-translate-y-1 hover:shadow-xl",
-                  "hover:border-primary/30",
+                  "hover:-translate-y-1 hover:shadow-xl hover:border-primary/30",
                   "focus-within:ring-2 focus-within:ring-primary/20",
                 ].join(" ")}
               >
-                <div
-                  className={[
-                    "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300",
-                    "group-hover:opacity-100",
-                    "bg-[radial-gradient(1200px_circle_at_20%_0%,rgba(99,102,241,0.14),transparent_45%),",
-                    "radial-gradient(900px_circle_at_80%_20%,rgba(16,185,129,0.12),transparent_40%)]",
-                  ].join("")}
-                />
+                {/* Background image */}
+                {s.image && (
+                  <div className="absolute inset-0">
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
 
-                <CardContent className="relative p-6">
-                  <div className="flex items-start gap-4">
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/30" />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20" />
+
+                <CardContent className="relative z-10 flex h-full p-6">
+                  <div className="mt-auto w-full">
                     <div
                       className={[
-                        "rounded-2xl border bg-primary/5 p-3",
+                        "mb-4 inline-flex rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-sm",
                         "transition-all duration-300",
-                        "group-hover:bg-primary/10 group-hover:border-primary/20",
+                        "group-hover:bg-white/15",
                       ].join(" ")}
                     >
-                      <Icon className="h-6 w-6 text-primary" />
+                      <Icon className="h-6 w-6 text-white" />
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="truncate text-base font-semibold">{s.title}</h3>
-                      <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                      <h3 className="truncate text-base font-semibold text-white">
+                        {s.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 text-sm text-white/80">
                         {s.desc}
                       </p>
                     </div>
