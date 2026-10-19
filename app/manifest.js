@@ -6,7 +6,10 @@ export default function manifest() {
       "Mins Hospital offers trusted healthcare services, specialist consultations, modern facilities, preventive checkups, and patient-focused care.",
     start_url: "/",
     scope: "/",
+    id: "/",
     display: "standalone",
+    orientation: "portrait",
+    categories: ["health", "medical"],
     background_color: "#ffffff",
     theme_color: "#4ac06c",
     icons: [

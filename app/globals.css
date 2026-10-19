@@ -123,6 +123,31 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Native-app feel on touch devices */
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (max-width: 767px) {
+    a,
+    button,
+    [role="button"] {
+      touch-action: manipulation;
+    }
+  }
+  /* When installed as a PWA, disable rubber-band overscroll and text-selection on chrome UI */
+  @media (display-mode: standalone) {
+    html,
+    body {
+      overscroll-behavior-y: none;
+    }
+    header,
+    nav {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+  }
 }
 
 @layer utilities {

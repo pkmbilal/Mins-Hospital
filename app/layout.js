@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister"
+import MobileTabBar from "@/components/MobileTabBar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,15 +60,19 @@ export const metadata = {
 
 export const viewport = {
   themeColor: "#4ac06c",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0`}
       >
         {children}
+        <MobileTabBar />
         <ServiceWorkerRegister />
       </body>
     </html>
