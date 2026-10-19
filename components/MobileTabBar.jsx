@@ -2,15 +2,14 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Stethoscope, Phone, Tag, MessageSquare } from "lucide-react"
+import { Home, Stethoscope, CalendarCheck, Tag, MessageSquare } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { CONTACT } from "@/lib/siteData"
 
 const TABS = [
   { label: "Home", href: "/", icon: Home },
   { label: "Departments", href: "/departments", icon: Stethoscope },
-  { label: "Call", href: `tel:${CONTACT.phone.replace(/\s/g, "")}`, icon: Phone, primary: true },
+  { label: "Book", href: "/book", icon: CalendarCheck, primary: true },
   { label: "Offers", href: "/offers", icon: Tag },
   { label: "Contact", href: "/contact", icon: MessageSquare },
 ]
@@ -33,26 +32,33 @@ export default function MobileTabBar() {
     >
       <ul className="mx-auto grid h-16 max-w-md grid-cols-5 items-center">
         {TABS.map(({ label, href, icon: Icon, primary }) => {
+          const active = isActive(pathname, href)
+
           if (primary) {
             return (
               <li key={label} className="flex justify-center">
-                <a
+                <Link
                   href={href}
-                  aria-label="Call hospital"
+                  aria-label="Book appointment"
+                  aria-current={active ? "page" : undefined}
                   className="-mt-7 flex flex-col items-center gap-1 select-none"
                 >
                   <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/40 ring-4 ring-background transition-transform active:scale-90">
                     <Icon className="h-6 w-6" />
                   </span>
-                  <span className="text-[11px] font-medium text-muted-foreground">
+                  <span
+                    className={cn(
+                      "text-[11px] font-medium",
+                      active ? "text-primary" : "text-muted-foreground"
+                    )}
+                  >
                     {label}
                   </span>
-                </a>
+                </Link>
               </li>
             )
           }
 
-          const active = isActive(pathname, href)
           return (
             <li key={label}>
               <Link

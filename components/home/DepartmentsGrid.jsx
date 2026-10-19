@@ -4,8 +4,14 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useMemo, useRef, useState } from "react"
+import { CalendarCheck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { DEPARTMENTS } from "@/lib/siteData"
+
+function bookHref(title) {
+  return `/book?department=${encodeURIComponent(title)}`
+}
 
 function slugify(title) {
   return title
@@ -139,6 +145,13 @@ export default function DepartmentsGrid() {
             </Card>
           </Link>
         </div>
+
+        <Button asChild size="lg" className="mt-3 w-full gap-2">
+          <Link href={bookHref(activeDepartment?.title || "")}>
+            <CalendarCheck className="h-4 w-4" />
+            Book {activeDepartment?.title} Appointment
+          </Link>
+        </Button>
       </div>
 
       {/* Desktop */}
@@ -148,7 +161,8 @@ export default function DepartmentsGrid() {
           const href = s.href || `/services/${slugify(s.title)}`
 
           return (
-            <Link key={s.title} href={href} className="group">
+            <div key={s.title} className="relative">
+            <Link href={href} className="group">
               <Card
                 className={[
                   "relative h-[260px] overflow-hidden rounded-2xl border border-white/10 bg-background",
@@ -199,6 +213,15 @@ export default function DepartmentsGrid() {
                 </CardContent>
               </Card>
             </Link>
+            <Link
+              href={bookHref(s.title)}
+              aria-label={`Book ${s.title} appointment`}
+              className="absolute right-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-md transition hover:brightness-110"
+            >
+              <CalendarCheck className="h-3.5 w-3.5" />
+              Book
+            </Link>
+            </div>
           )
         })}
       </div>
