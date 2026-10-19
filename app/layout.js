@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,11 @@ export const metadata = {
   description:
     "Mins Hospital offers trusted healthcare services, specialist consultations, modern facilities, preventive checkups, and patient-focused care.",
   applicationName: "Mins Hospital",
+  appleWebApp: {
+    capable: true,
+    title: "Mins Hospital",
+    statusBarStyle: "default",
+  },
   authors: [{ name: "Mins Hospital" }],
   creator: "Mins Hospital",
   publisher: "Mins Hospital",
@@ -51,6 +57,10 @@ export const metadata = {
   },
 }
 
+export const viewport = {
+  themeColor: "#4ac06c",
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -58,6 +68,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   )
