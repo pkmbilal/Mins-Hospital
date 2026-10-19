@@ -8,8 +8,8 @@ import NextImage from "next/image";
 export default function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="mx-auto max-w-6xl px-4 pt-6 pb-12">
-        <div className="grid gap-10 md:grid-cols-4">
+      <div className="mx-auto max-w-6xl px-4 py-6 md:pt-6 md:pb-12">
+        <div className="hidden gap-10 md:grid md:grid-cols-4">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <NextImage
@@ -83,8 +83,8 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <Separator className="my-8" />
-        <div className="flex flex-col gap-2 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+        <Separator className="my-8 hidden md:block" />
+        <div className="flex flex-col items-center gap-2 text-xs text-muted-foreground md:flex-row md:text-sm md:items-center md:justify-between">
           <span>
             © {new Date().getFullYear()} Mins Hospital. All rights reserved.
           </span>

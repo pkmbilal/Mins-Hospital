@@ -40,8 +40,8 @@ function navIcon(label) {
 
 export default function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+    <header className="sticky top-0 z-50 border-b bg-background/80 pt-[env(safe-area-inset-top)] backdrop-blur-lg">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 md:h-auto md:py-4">
         {/* Desktop logo */}
         <Link href="/" className="hidden items-center gap-2 md:flex">
           <NextImage
@@ -100,11 +100,20 @@ export default function SiteHeader() {
           </Button>
         </div>
 
-        {/* Mobile drawer */}
-        <div className="md:hidden">
+        {/* Mobile actions + drawer */}
+        <div className="flex items-center gap-1 md:hidden">
+          <Button asChild variant="ghost" size="icon" className="rounded-full" aria-label="WhatsApp">
+            <a
+              href={`https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle className="h-5 w-5" />
+            </a>
+          </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="rounded-full" aria-label="Open menu">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
